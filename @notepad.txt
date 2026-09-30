@@ -1,0 +1,115 @@
+
+
+- request help
+	- request components: human resources, money, materials
+	- requester can expire request components or an entire request
+	- request is marked as fulfilled when done
+	- fulfilled and expired items cannot be delivered again
+	
+- response to help
+	- anyone can respond to a request (partially or entirely)
+	- response sent to the relief center
+	- pledge: response made before an event, delivered at event time
+
+- site users
+	- need authentication for asking for contributions
+	- query and match request they want to respond to and deliver
+
+- call center
+	- connect people who need help, people who want to help, volunteers, and government agencies
+	- operator and admin users
+
+- disasters
+	- geographic location details
+	- contact center details
+	- duration of occurrence of event
+	- categories of required items or help (created by admins)
+	- existing events can have required items added by any user from the event center or administrator
+	- categories of items differ for different events
+	- common attributes of each item are listed
+	- confidentiality of volunteers must be maintained
+	- email confirmation is required
+	- context-sensitive help text, users should be able to change it
+	- ability to change/cancel a requirement or offer for help
+	- system administrators can do any of the functions
+	- user feedback, ranking on condition of resource
+
+- other requirements
+	- optimization of travel distance
+	- web portal supports concurrency
+	- web and mobile application
+	- email notifications
+
+- data model
+	- search for requirements at relief center near their zip code
+	- efficiency: people near disaster location provide help
+	* mysql or oracle or sql server for database
+
+- security
+	- data encryption (128 bits)
+	- invisible password
+	- structure of password
+	- password change policy
+	- user id/password retrieval
+
+
+- other technical requirements:
+	- backend: java, .net, python
+	- use MVC/REST or something similar
+	- "508 compliant" UI; accessibility features for disability people
+	- one/two meetings per week, record details
+	- automated testing (junit, ...)
+	- Iteration plan submission identifying functions to be delivered
+
+
+	
+
+
+* requests come from a location, responders may not know location or what is required
+* call center connects donors, recipients, volunteers, and government agencies
+
+Main:
+- donor functions: respond, pledge to respond, etc
+- disaster event center represntative (recipient): register for help, receive help, expire help, etc.
+- administrator functions
+- all users require authentication with their privacy secured
+- email notifications
+
+
+Feb 15: first draft due (basic environment setup)
+
+ENVIRONMENT
+- java for backend
+- mysql for database
+- javascript for frontend
+
+
+
+
+
+Iterations:
+
+FOR EACH
+- project plan
+	- documentation template
+	- master project schedule
+	- estimation work sheet
+	- roles and responsibilities
+	- risk management plan
+	- tool plan
+- user requirement specification - use cases
+- test plans and automated testing
+- analyze
+	- software requirements specifications models
+	- analysis
+	- data dictionary
+	- specific requirements
+- design (screens, database, architecture)
+
+
+FEB 15: Iteration 0: environment setup
+Mar w1: Iteration 1
+Apr w1: Iteration 2
+May w1: Iteration 3: final
+
++ WEEKLY PROGRESS REPORTS DUE EVERY TUESDAY
