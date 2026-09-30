@@ -1,30 +1,93 @@
-Setting Up Application:
+# Disaster Relief Management System
 
-1. Assumed install of MySQL, Java, and DBeaver is already done
+Full-stack web application developed as a graduate-level Software Engineering project using Agile methodologies. The system simulates disaster reporting, user management, and coordination workflows.
 
-2. Open SQL Script "seproject7.sql" in DBeaver (found in the db Dir)
+Built with **Java Spring Boot**, **React**, and **MySQL**.
 
-3. Execute script in DBeaver
-3.a. If the script does not run in DBeaver, open up the MySQL terminal to execute code.
+## Tech Stack
 
-4. Configure Gradle by running gradle in IDE
+- **Backend:** Java 8, Spring Boot 2.2, Spring Data JPA, Spring Data REST, Spring Web
+- **Frontend:** React 16, Webpack, Babel
+- **Database:** MySQL
+- **Build:** Gradle + Node.js (for frontend bundling)
+- **Other:** Thymeleaf (templating support)
 
-5. Configure Spring by running user.sql in DBeaver (found in the db Dir)
-5.a. If the script does not run in DBeaver, open up the MySQL terminal to execute code.
+## Features
 
-6. Run Main() in Application Class
+- User registration and management (CRUD operations)
+- REST API endpoints for user data
+- React frontend that consumes the API and displays user information
+- JPA entity mapping with Hibernate
+- Database schema management via SQL scripts and Hibernate DDL
+- Modular structure with separate packages for authentication, requests, and commands
+- Integrated frontend build pipeline (Webpack runs as part of the Gradle build)
 
-7. To Test (Until automated testing is established) in a command prompt enter "
-curl localhost:8080/user/add -d name = testing -d email = test@someemail.com"
-If Successfully set up this will return "Successfully added user"
+## Prerequisites
 
-8. To test the get command, enter in command prompt "curl localhost:8080/user/get -d name=testing"
-If Successful, the command will return the previously added user.
+- JDK 8+
+- MySQL 5.7+ (or compatible) running locally
+- Node.js & npm
+- Git
 
-9. To test the get all command, enter in command prompt "curl localhost:8080/user/all"
-If successful, the command will return all users in the DB (currently only one)
+## Database Setup
 
-Debugging:
--Check to see that the username and password for the database scripts and application.properties are the same.
--If the setup configurations from Gradle don't work, manually install npm and node.
--If npmInstall task fails, submit an issue, but it's likely a problem with path.
+The application expects a MySQL database named `seproject7` with the following credentials (configurable in `src/main/resources/application.properties`):
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/seproject7
+spring.datasource.username=springuser
+spring.datasource.password=S0m3!p@ssw0rd
+```
+
+Apply the schema:
+
+```bash
+mysql -u root -p < db/seproject7.sql
+mysql -u root -p < db/user.sql
+```
+
+## Running the Application
+
+```bash
+# Install frontend dependencies and build
+./gradlew build
+
+# Run
+./gradlew bootRun
+```
+
+The application starts on `http://localhost:8080`.
+
+### Key Endpoints
+
+| Method | Endpoint          | Description              |
+|--------|-------------------|--------------------------|
+| POST   | `/user/add`       | Create a new user        |
+| GET    | `/user/get`       | Retrieve user by name    |
+| GET    | `/user/all`       | List all users           |
+| GET    | `/api/...`        | Spring Data REST endpoints |
+
+## Project Structure
+
+```
+├── db/                          # Database schema scripts
+├── src/main/java/.../           # Spring Boot application
+│   ├── Application.java         # Entry point
+│   ├── User.java                # JPA entity
+│   ├── UserController.java      # REST controller
+│   ├── UserRepository.java      # Spring Data repository
+│   ├── login/                   # Authentication & cryptography
+│   ├── requests/                # Request handling
+│   └── command/                 # Command listeners
+├── src/main/js/                 # React frontend source
+├── src/main/resources/          # application.properties, static assets
+├── build.gradle                 # Gradle build configuration
+└── webpack.config.js            # Frontend build config
+```
+
+## Development Notes
+
+This project was developed iteratively using Agile practices as part of a graduate Software Engineering course. The system models core workflows for disaster reporting and resource coordination without connecting to live external systems.
+
+The frontend is bundled via Webpack as part of the Gradle `processResources` task.
+```
